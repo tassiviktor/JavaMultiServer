@@ -1,7 +1,7 @@
 package hu.tassiviktor.multiserver;
 
-import hu.tassiviktor.multiserver.Exceptions.ListenerInitializationException;
-import hu.tassiviktor.multiserver.Interfaces.ProtocolHandlerInterface;
+import hu.tassiviktor.multiserver.exceptions.ListenerInitializationException;
+import hu.tassiviktor.multiserver.interfaces.ProtocolHandlerInterface;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

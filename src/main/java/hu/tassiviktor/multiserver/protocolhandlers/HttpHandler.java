@@ -1,6 +1,6 @@
-package hu.tassiviktor.multiserver.ProtocolHandlers;
+package hu.tassiviktor.multiserver.protocolhandlers;
 
-import hu.tassiviktor.multiserver.Interfaces.ProtocolHandlerInterface;
+import hu.tassiviktor.multiserver.interfaces.ProtocolHandlerInterface;
 import java.net.Socket;
 
 public class HttpHandler implements ProtocolHandlerInterface {

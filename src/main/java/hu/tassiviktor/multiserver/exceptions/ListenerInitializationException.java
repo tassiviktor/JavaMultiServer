@@ -1,4 +1,4 @@
-package hu.tassiviktor.multiserver.Exceptions;
+package hu.tassiviktor.multiserver.exceptions;
 
 /**
  *

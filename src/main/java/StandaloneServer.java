@@ -1,10 +1,10 @@
 
-import hu.tassiviktor.multiserver.Exceptions.ListenerExistsException;
-import hu.tassiviktor.multiserver.Exceptions.ListenerInitializationException;
-import hu.tassiviktor.multiserver.Exceptions.ListenerNotExistsException;
+import hu.tassiviktor.multiserver.exceptions.ListenerExistsException;
+import hu.tassiviktor.multiserver.exceptions.ListenerInitializationException;
+import hu.tassiviktor.multiserver.exceptions.ListenerNotExistsException;
 import hu.tassiviktor.multiserver.Listener;
 import hu.tassiviktor.multiserver.MultiServer;
-import hu.tassiviktor.multiserver.ProtocolHandlers.HttpHandler;
+import hu.tassiviktor.multiserver.protocolhandlers.HttpHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.net.ssl.*;

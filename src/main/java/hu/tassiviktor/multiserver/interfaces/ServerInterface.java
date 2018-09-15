@@ -1,4 +1,4 @@
-package hu.tassiviktor.multiserver.Interfaces;
+package hu.tassiviktor.multiserver.interfaces;
 
 /**
  *

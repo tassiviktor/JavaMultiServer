@@ -1,6 +1,6 @@
-package hu.tassiviktor.multiserver.Interfaces;
+package hu.tassiviktor.multiserver.interfaces;
 
-import hu.tassiviktor.multiserver.Exceptions.ListenerInitializationException;
+import hu.tassiviktor.multiserver.exceptions.ListenerInitializationException;
 import javax.net.ServerSocketFactory;
 
 /**

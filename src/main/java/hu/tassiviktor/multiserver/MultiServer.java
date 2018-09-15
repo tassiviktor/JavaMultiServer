@@ -1,12 +1,12 @@
 package hu.tassiviktor.multiserver;
 
-import hu.tassiviktor.multiserver.Exceptions.ListenerExistsException;
-import hu.tassiviktor.multiserver.Exceptions.ListenerInitializationException;
-import hu.tassiviktor.multiserver.Exceptions.ListenerNotExistsException;
-import hu.tassiviktor.multiserver.Interfaces.ServerInterface;
+import hu.tassiviktor.multiserver.exceptions.ListenerExistsException;
+import hu.tassiviktor.multiserver.exceptions.ListenerInitializationException;
+import hu.tassiviktor.multiserver.exceptions.ListenerNotExistsException;
+import hu.tassiviktor.multiserver.interfaces.ServerInterface;
 import java.util.HashMap;
 import java.util.Map;
-import hu.tassiviktor.multiserver.Interfaces.ListenerInterface;
+import hu.tassiviktor.multiserver.interfaces.ListenerInterface;
 
 public class MultiServer implements ServerInterface {
 
