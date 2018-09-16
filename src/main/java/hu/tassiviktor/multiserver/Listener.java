@@ -37,6 +37,7 @@ public class Listener implements ListenerInterface {
             throw new ListenerInitializationException(ex.getMessage(), ex);
         }
         worker = new ListenerWorker(serverSocket,protocolHandlerClass);
+        worker.initQueue();
     }
 
     @Override

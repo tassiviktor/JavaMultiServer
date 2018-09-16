@@ -5,6 +5,8 @@ import hu.tassiviktor.multiserver.interfaces.ProtocolHandlerInterface;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -43,13 +45,18 @@ public class ListenerWorker implements Runnable {
             Socket incomingConnection;
             try {
                 incomingConnection = serverSocket.accept();
-
                 try {
                     ProtocolHandlerInterface h;
                     h = handlerClass.newInstance();
                     h.setSocket(incomingConnection);
                     if (addHandlerToQueue(h)) {
-                        h.run();
+                        h.addObserver(new Observer(){
+                            @Override
+                            public void update(Observable o, Object arg) {
+                                myQueue.remove(arg);
+                            }
+                        });
+                        new Thread(h).run();
                     }
                 } catch (InstantiationException | IllegalAccessException ex) {
                     Logger.getLogger(ListenerWorker.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,7 +85,7 @@ public class ListenerWorker implements Runnable {
         }
 
         //if long queue wait, socket may interrupted meanwhile
-        if (!h.getSocket().isClosed()) {
+        if (h.getSocket().isClosed()) {
             destroyHandler(h);
             return false;
         }
@@ -93,8 +100,8 @@ public class ListenerWorker implements Runnable {
             } catch (IOException ex) {
 
             }
-            h.setSocket(null);
-            h = null;
         }
+        h.setSocket(null);
+        h = null;
     }
 }
