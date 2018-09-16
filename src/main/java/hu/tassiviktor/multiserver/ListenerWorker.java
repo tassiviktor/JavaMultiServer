@@ -50,13 +50,7 @@ public class ListenerWorker implements Runnable {
                     h = handlerClass.newInstance();
                     h.setSocket(incomingConnection);
                     if (addHandlerToQueue(h)) {
-                        h.addObserver(new Observer(){
-                            @Override
-                            public void update(Observable o, Object arg) {
-                                myQueue.remove(arg);
-                            }
-                        });
-                        new Thread(h).run();
+                        startHandler(h);
                     }
                 } catch (InstantiationException | IllegalAccessException ex) {
                     Logger.getLogger(ListenerWorker.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,6 +84,16 @@ public class ListenerWorker implements Runnable {
             return false;
         }
         return true;
+    }
+
+    protected void startHandler(ProtocolHandlerInterface h) {
+        h.addObserver(new Observer() {
+            @Override
+            public void update(Observable o, Object arg) {
+                myQueue.remove(arg);
+            }
+        });
+        new Thread(h).run();
     }
 
     // For GC

@@ -13,15 +13,11 @@ public class HttpHandler extends Observable implements ProtocolHandlerInterface 
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(HttpHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        safeClose();
+        
+        shutDown();
     }
 
-    protected void safeClose() {
+    protected void shutDown() {
         if (!getSocket().isClosed()) {
             try {
                 getSocket().close();
@@ -34,13 +30,15 @@ public class HttpHandler extends Observable implements ProtocolHandlerInterface 
 
     protected void notifyObserver() {
         setChanged();
-        this.notifyObservers(this);
+        notifyObservers(this);
     }
 
+    @Override
     public Socket getSocket() {
         return socket;
     }
 
+    @Override
     public void setSocket(Socket socket) {
         this.socket = socket;
     }
